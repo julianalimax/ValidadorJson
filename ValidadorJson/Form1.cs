@@ -92,7 +92,7 @@ namespace ValidadorJson
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            notasFiscais = new NotaFiscal[2];
+            notasFiscais = new NotaFiscal[3];
 
             JSchema schemaNFSe = JSchema.Parse(@"{
                                             'type': 'object',
@@ -419,10 +419,532 @@ namespace ValidadorJson
                       ]
                 }");
             NotaFiscal notaFiscalC = new NotaFiscal("NFC", schemaNFC);
+            JSchema schemaNF = JSchema.Parse(@"{'type': 'object',
+            'properties': {
+                        'id': {
+                            'type': 'string'
+                        },
+              'numero': {
+                            'type': 'integer'
+              },
+              'serie': {
+                            'type': 'string'
+              },
+              'naturezaOperacao': {
+                            'type': 'string'
+              },
+              'tipoOperacao': {
+                            'type': 'string'
+              },
+              'finalidade': {
+                            'type': 'string'
+              },
+              'nfeReferenciada': {
+                            'type': 'object',
+                'properties': {
+                                'chaveAcesso': {
+                                    'type': 'string'
+                                }
+                            },
+                'required': [
+                  'chaveAcesso'
+                ]
+            },
+              'ambienteEmissao': {
+                'type': 'string'
+              },
+              'consumidorFinal': {
+                'type': 'boolean'
+              },
+              'indicadorPresencaConsumidor': {
+                'type': 'string'
+              },
+              'indicadorFormaPagamento': {
+                'type': 'string'
+              },
+              'dataEmissao': {
+                'type': 'string'
+              },
+              'transporte': {
+                'type': 'object',
+                'properties': {
+                  'frete': {
+                    'type': 'object',
+                    'properties': {
+                      'modalidade': {
+                        'type': 'string'
+                      },
+                      'valor': {
+                        'type': 'integer'
+                      }
+                    },
+                    'required': [
+                      'modalidade',
+                      'valor'
+                    ]
+                  },
+                  'enderecoEntrega': {
+                    'type': 'object',
+                    'properties': {
+                      'tipoPessoaDestinatario': {
+                        'type': 'string'
+                      },
+                      'cpfCnpjDestinatario': {
+                        'type': 'string'
+                      },
+                      'pais': {
+                        'type': 'string'
+                      },
+                      'uf': {
+                        'type': 'string'
+                      },
+                      'cidade': {
+                        'type': 'string'
+                      },
+                      'logradouro': {
+                        'type': 'string'
+                      },
+                      'numero': {
+                        'type': 'string'
+                      },
+                      'complemento': {
+                        'type': 'string'
+                      },
+                      'bairro': {
+                        'type': 'string'
+                      },
+                      'cep': {
+                        'type': 'string'
+                      }
+                    },
+                    'required': [
+                      'tipoPessoaDestinatario',
+                      'cpfCnpjDestinatario',
+                      'pais',
+                      'uf',
+                      'cidade',
+                      'logradouro',
+                      'numero',
+                      'complemento',
+                      'bairro',
+                      'cep'
+                    ]
+                  },
+                  'transportadora': {
+                    'type': 'object',
+                    'properties': {
+                      'usarDadosEmitente': {
+                        'type': 'boolean'
+                      },
+                      'tipoPessoa': {
+                        'type': 'string'
+                      },
+                      'cpfCnpj': {
+                        'type': 'string'
+                      },
+                      'nome': {
+                        'type': 'string'
+                      },
+                      'inscricaoEstadual': {
+                        'type': 'string'
+                      },
+                      'enderecoCompleto': {
+                        'type': 'string'
+                      },
+                      'uf': {
+                        'type': 'string'
+                      },
+                      'cidade': {
+                        'type': 'string'
+                      }
+                    },
+                    'required': [
+                      'usarDadosEmitente',
+                      'tipoPessoa',
+                      'cpfCnpj',
+                      'nome',
+                      'inscricaoEstadual',
+                      'enderecoCompleto',
+                      'uf',
+                      'cidade'
+                    ]
+                  },
+                  'veiculo': {
+                    'type': 'object',
+                    'properties': {
+                      'placa': {
+                        'type': 'string'
+                      },
+                      'uf': {
+                        'type': 'string'
+                      }
+                    },
+                    'required': [
+                      'placa',
+                      'uf'
+                    ]
+                  },
+                  'volume': {
+                    'type': 'object',
+                    'properties': {
+                      'quantidade': {
+                        'type': 'integer'
+                      },
+                      'especie': {
+                        'type': 'string'
+                      },
+                      'marca': {
+                        'type': 'string'
+                      },
+                      'numeracao': {
+                        'type': 'string'
+                      },
+                      'pesoBruto': {
+                        'type': 'integer'
+                      },
+                      'pesoLiquido': {
+                        'type': 'integer'
+                      }
+                    },
+                    'required': [
+                      'quantidade',
+                      'especie',
+                      'marca',
+                      'numeracao',
+                      'pesoBruto',
+                      'pesoLiquido'
+                    ]
+                  }
+                },
+                'required': [
+                  'frete',
+                  'enderecoEntrega',
+                  'transportadora',
+                  'veiculo',
+                  'volume'
+                ]
+              },
+              'cliente': {
+                'type': 'object',
+                'properties': {
+                  'endereco': {
+                    'type': 'object',
+                    'properties': {
+                      'pais': {
+                        'type': 'string'
+                      },
+                      'uf': {
+                        'type': 'string'
+                      },
+                      'cidade': {
+                        'type': 'string'
+                      },
+                      'logradouro': {
+                        'type': 'string'
+                      },
+                      'numero': {
+                        'type': 'string'
+                      },
+                      'complemento': {
+                        'type': 'string'
+                      },
+                      'bairro': {
+                        'type': 'string'
+                      },
+                      'cep': {
+                        'type': 'string'
+                      }
+                    },
+                    'required': [
+                      'pais',
+                      'uf',
+                      'cidade',
+                      'logradouro',
+                      'numero',
+                      'complemento',
+                      'bairro',
+                      'cep'
+                    ]
+                  },
+                  'tipoPessoa': {
+                    'type': 'string'
+                  },
+                  'nome': {
+                    'type': 'string'
+                  },
+                  'email': {
+                    'type': 'string'
+                  },
+                  'cpfCnpj': {
+                    'type': 'string'
+                  },
+                  'inscricaoMunicipal': {
+                    'type': 'string'
+                  },
+                  'inscricaoEstadual': {
+                    'type': 'string'
+                  },
+                  'indicadorContribuinteICMS': {
+                    'type': 'string'
+                  },
+                  'telefone': {
+                    'type': 'string'
+                  }
+                },
+                'required': [
+                  'endereco',
+                  'tipoPessoa',
+                  'nome',
+                  'email',
+                  'cpfCnpj',
+                  'inscricaoMunicipal',
+                  'inscricaoEstadual',
+                  'indicadorContribuinteICMS',
+                  'telefone'
+                ]
+              },
+              'enviarPorEmail': {
+                'type': 'boolean'
+              },
+              'itens': {
+                'type': 'array',
+                'items': [
+                  {
+                    'type': 'object',
+                    'properties': {
+                      'cfop': {
+                        'type': 'string'
+                      },
+                      'codigo': {
+                        'type': 'string'
+                      },
+                      'descricao': {
+                        'type': 'string'
+                      },
+                      'sku': {
+                        'type': 'string'
+                      },
+                      'ncm': {
+                        'type': 'string'
+                      },
+                      'cest': {
+                        'type': 'string'
+                      },
+                      'quantidade': {
+                        'type': 'integer'
+                      },
+                      'unidadeMedida': {
+                        'type': 'string'
+                      },
+                      'valorUnitario': {
+                        'type': 'integer'
+                      },
+                      'impostos': {
+                        'type': 'object',
+                        'properties': {
+                          'percentualAproximadoTributos': {
+                            'type': 'object',
+                            'properties': {
+                              'simplificado': {
+                                'type': 'object',
+                                'properties': {
+                                  'percentual': {
+                                    'type': 'integer'
+                                  }
+                                },
+                                'required': [
+                                  'percentual'
+                                ]
+                              },
+                              'detalhado': {
+                                'type': 'object',
+                                'properties': {
+                                  'percentualFederal': {
+                                    'type': 'integer'
+                                  },
+                                  'percentualEstadual': {
+                                    'type': 'integer'
+                                  },
+                                  'percentualMunicipal': {
+                                    'type': 'integer'
+                                  }
+                                },
+                                'required': [
+                                  'percentualFederal',
+                                  'percentualEstadual',
+                                  'percentualMunicipal'
+                                ]
+                              },
+                              'fonte': {
+                                'type': 'string'
+                              }
+                            },
+                            'required': [
+                              'simplificado',
+                              'detalhado',
+                              'fonte'
+                            ]
+                          },
+                          'icms': {
+                            'type': 'object',
+                            'properties': {
+                              'situacaoTributaria': {
+                                'type': 'string'
+                              },
+                              'origem': {
+                                'type': 'integer'
+                              },
+                              'aliquota': {
+                                'type': 'integer'
+                              },
+                              'baseCalculo': {
+                                'type': 'integer'
+                              },
+                              'modalidadeBaseCalculo': {
+                                'type': 'integer'
+                              },
+                              'percentualReducaoBaseCalculo': {
+                                'type': 'integer'
+                              },
+                              'baseCalculoST': {
+                                'type': 'integer'
+                              },
+                              'aliquotaST': {
+                                'type': 'integer'
+                              },
+                              'modalidadeBaseCalculoST': {
+                                'type': 'integer'
+                              },
+                              'percentualReducaoBaseCalculoST': {
+                                'type': 'integer'
+                              },
+                              'percentualMargemValorAdicionadoST': {
+                                'type': 'integer'
+                              }
+                            },
+                            'required': [
+                              'situacaoTributaria',
+                              'origem',
+                              'aliquota',
+                              'baseCalculo',
+                              'modalidadeBaseCalculo',
+                              'percentualReducaoBaseCalculo',
+                              'baseCalculoST',
+                              'aliquotaST',
+                              'modalidadeBaseCalculoST',
+                              'percentualReducaoBaseCalculoST',
+                              'percentualMargemValorAdicionadoST'
+                            ]
+                          },
+                          'pis': {
+                            'type': 'object',
+                            'properties': {
+                              'situacaoTributaria': {
+                                'type': 'string'
+                              }
+                            },
+                            'required': [
+                              'situacaoTributaria'
+                            ]
+                          },
+                          'cofins': {
+                            'type': 'object',
+                            'properties': {
+                              'situacaoTributaria': {
+                                'type': 'string'
+                              }
+                            },
+                            'required': [
+                              'situacaoTributaria'
+                            ]
+                          },
+                          'ipi': {
+                            'type': 'object',
+                            'properties': {
+                              'porAliquota': {
+                                'type': 'object',
+                                'properties': {
+                                  'aliquota': {
+                                    'type': 'integer'
+                                  }
+                                },
+                                'required': [
+                                  'aliquota'
+                                ]
+                              },
+                              'situacaoTributaria': {
+                                'type': 'string'
+                              }
+                            },
+                            'required': [
+                              'porAliquota',
+                              'situacaoTributaria'
+                            ]
+                          }
+                        },
+                        'required': [
+                          'percentualAproximadoTributos',
+                          'icms',
+                          'pis',
+                          'cofins',
+                          'ipi'
+                        ]
+                      },
+                      'informacoesAdicionais': {
+                        'type': 'string'
+                      }
+                    },
+                    'required': [
+                      'cfop',
+                      'codigo',
+                      'descricao',
+                      'sku',
+                      'ncm',
+                      'cest',
+                      'quantidade',
+                      'unidadeMedida',
+                      'valorUnitario',
+                      'impostos',
+                      'informacoesAdicionais'
+                    ]
+                  }
+                ]
+              },
+              'informacoesAdicionais': {
+                'type': 'string'
+              }
+            },
+            'required': [
+              'id',
+              'numero',
+              'serie',
+              'naturezaOperacao',
+              'tipoOperacao',
+              'finalidade',
+              'nfeReferenciada',
+              'ambienteEmissao',
+              'consumidorFinal',
+              'indicadorPresencaConsumidor',
+              'indicadorFormaPagamento',
+              'dataEmissao',
+              'transporte',
+              'cliente',
+              'enviarPorEmail',
+              'itens',
+              'informacoesAdicionais'
+            ]
+            }");
+
+            NotaFiscal notaFiscalP = new NotaFiscal("NF", schemaNF);
             notasFiscais[0] = notaFiscalSe;
             notasFiscais[1] = notaFiscalC;
+            notasFiscais[2] = notaFiscalP;
+
             tipoNota.Items.Add(notaFiscalSe.tipo);
             tipoNota.Items.Add(notaFiscalC.tipo);
+            tipoNota.Items.Add(notaFiscalP.tipo);
+
+        
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -434,6 +956,11 @@ namespace ValidadorJson
         {
             int indice = tipoNota.SelectedIndex;
             notaFiscalSelecionada = this.notasFiscais[indice];
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox2.Clear();
         }
     }
 }

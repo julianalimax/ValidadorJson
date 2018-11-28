@@ -33,6 +33,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tipoNota = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -45,11 +46,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(422, 406);
+            this.button1.Location = new System.Drawing.Point(345, 395);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(92, 43);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Validar";
+            this.button1.Text = "&Validar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -80,11 +81,22 @@
             this.tipoNota.TabIndex = 5;
             this.tipoNota.SelectedIndexChanged += new System.EventHandler(this.tipoNota_SelectedIndexChanged);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(462, 395);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(92, 43);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "&Limpar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 450);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.tipoNota);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
@@ -105,6 +117,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox tipoNota;
+        private System.Windows.Forms.Button button2;
     }
 }
 
