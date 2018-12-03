@@ -38,7 +38,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 84);
+            this.textBox1.Location = new System.Drawing.Point(23, 84);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(425, 305);
@@ -46,7 +46,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(345, 395);
+            this.button1.Location = new System.Drawing.Point(356, 395);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(92, 43);
             this.button1.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(462, 84);
+            this.textBox2.Location = new System.Drawing.Point(486, 84);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(427, 305);
@@ -70,7 +70,6 @@
             this.label1.Size = new System.Drawing.Size(122, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Selecione o tipo de nota";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tipoNota
             // 
@@ -83,7 +82,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(462, 395);
+            this.button2.Location = new System.Drawing.Point(486, 395);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(92, 43);
             this.button2.TabIndex = 6;

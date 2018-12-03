@@ -1,0 +1,276 @@
+﻿{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "ambienteEmissao": {
+      "type": "string"
+    },
+    "pedido": {
+      "type": "object",
+      "properties": {
+        "presencaConsumidor": {
+          "type": "string"
+        },
+        "pagamento": {
+          "type": "object",
+          "properties": {
+            "tipo": {
+              "type": "string"
+            },
+            "formas": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "tipo": {
+                      "type": "string"
+                    },
+                    "valor": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "tipo",
+                    "valor"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "tipo": {
+                      "type": "string"
+                    },
+                    "valor": {
+                      "type": "number"
+                    },
+                    "credenciadoraCartao": {
+                      "type": "object",
+                      "properties": {
+                        "tipoIntegracaoPagamento": {
+                          "type": "string"
+                        },
+                        "cnpjCredenciadoraCartao": {
+                          "type": "string"
+                        },
+                        "bandeira": {
+                          "type": "string"
+                        },
+                        "autorizacao": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "tipoIntegracaoPagamento",
+                        "cnpjCredenciadoraCartao",
+                        "bandeira",
+                        "autorizacao"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "tipo",
+                    "valor",
+                    "credenciadoraCartao"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "tipo",
+            "formas"
+          ]
+        }
+      },
+      "required": [
+        "presencaConsumidor",
+        "pagamento"
+      ]
+    },
+    "cliente": {
+      "type": "object",
+      "properties": {
+        "tipoPessoa": {
+          "type": "string"
+        },
+        "nome": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "telefone": {
+          "type": "string"
+        },
+        "cpfCnpj": {
+          "type": "string"
+        },
+        "endereco": {
+          "type": "object",
+          "properties": {
+            "pais": {
+              "type": "string"
+            },
+            "uf": {
+              "type": "string"
+            },
+            "cidade": {
+              "type": "string"
+            },
+            "logradouro": {
+              "type": "string"
+            },
+            "numero": {
+              "type": "string"
+            },
+            "complemento": {
+              "type": "string"
+            },
+            "bairro": {
+              "type": "string"
+            },
+            "cep": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "pais",
+            "uf",
+            "cidade",
+            "logradouro",
+            "numero",
+            "complemento",
+            "bairro",
+            "cep"
+          ]
+        }
+      },
+      "required": [
+        "tipoPessoa",
+        "nome",
+        "email",
+        "telefone",
+        "cpfCnpj",
+        "endereco"
+      ]
+    },
+    "enviarPorEmail": {
+      "type": "boolean"
+    },
+    "itens": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "cfop": {
+              "type": "string"
+            },
+            "codigo": {
+              "type": "string"
+            },
+            "descricao": {
+              "type": "string"
+            },
+            "ncm": {
+              "type": "string"
+            },
+            "quantidade": {
+              "type": "integer"
+            },
+            "unidadeMedida": {
+              "type": "string"
+            },
+            "valorUnitario": {
+              "type": "number"
+            },
+            "descontos": {
+              "type": "number"
+            },
+            "impostos": {
+              "type": "object",
+              "properties": {
+                "percentualAproximadoTributos": {
+                  "type": "object",
+                  "properties": {
+                    "detalhado": {
+                      "type": "object",
+                      "properties": {
+                        "percentualFederal": {
+                          "type": "number"
+                        },
+                        "percentualEstadual": {
+                          "type": "number"
+                        },
+                        "percentualMunicipal": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "percentualFederal",
+                        "percentualEstadual",
+                        "percentualMunicipal"
+                      ]
+                    },
+                    "fonte": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "detalhado",
+                    "fonte"
+                  ]
+                },
+                "icms": {
+                  "type": "object",
+                  "properties": {
+                    "situacaoTributaria": {
+                      "type": "string"
+                    },
+                    "origem": {
+                      "type": "integer"
+                    },
+                    "aliquota": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "situacaoTributaria",
+                    "origem",
+                    "aliquota"
+                  ]
+                }
+              },
+              "required": [
+                "percentualAproximadoTributos",
+                "icms"
+              ]
+            }
+          },
+          "required": [
+            "cfop",
+            "codigo",
+            "descricao",
+            "ncm",
+            "quantidade",
+            "unidadeMedida",
+            "valorUnitario",
+            "descontos",
+            "impostos"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "ambienteEmissao",
+    "pedido",
+    "cliente",
+    "enviarPorEmail",
+    "itens"
+  ]
+}
